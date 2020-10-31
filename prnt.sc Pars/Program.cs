@@ -14,7 +14,8 @@ namespace prnt.sc_Pars
         {
             using (var wc = new WebClient())
             {
-                var nm = $@"Images\{Url.Split("sc/")[1]}.png";
+                if (!Directory.Exists("Images")) Directory.CreateDirectory("Images");
+                 var nm = $@"Images\{Url.Split("sc/")[1]}.png";
                 if (File.Exists(nm)) return;
                 try
                 {
