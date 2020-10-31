@@ -21,10 +21,12 @@ namespace prnt.sc_Pars
                 {
                     wc.Headers.Set(HttpRequestHeader.AcceptLanguage, "eu");
                     wc.Headers.Set(HttpRequestHeader.UserAgent, "Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B334b Safari/531.21.102011-10-16 20:23:10");
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write ($"GetPage {Url} ");
                     var str = wc.DownloadString(Url);
                     var r = new Regex(@"<meta name=\""twitter:image:src\"" content=\""(.*?)\""\/>");
                     var m = r.Match(str).Groups[1].Value;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"GetFile {m}");
                     wc.DownloadFile(m, nm);
                 }
